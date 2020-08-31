@@ -59,6 +59,10 @@ namespace riscv {
 			case type_identifier::U:
 				return type_u{ instruction };
 
+			case type_identifier::CEXT:
+				return cext_handler(instruction); //TODO: Pass instruction as uint16_t make sure that works properly
+				break;
+
 			default:
 				return type_r{ 0 };
 			}
@@ -72,6 +76,11 @@ namespace riscv {
 		const type_identifier object::get_type() const
 		{
 			return m_type;
+		}
+
+		const object::instruction_format object::cext_handler(const uint16_t instruction) const
+		{
+
 		}
 	}
 }
